@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c8mr2bdpuyl8t"
+path="res://.godot/imported/sfx_sounds_impact_wood1.mp3-2177bf2e14bdb78780efbe9c48412787.mp3str"
+
+[deps]
+
+source_file="res://assets/Audio/General Sounds/Impacts/sfx_sounds_impact_wood1.mp3"
+dest_files=["res://.godot/imported/sfx_sounds_impact_wood1.mp3-2177bf2e14bdb78780efbe9c48412787.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://jbytlxuq2t1e"
+path="res://.godot/imported/sfx_sounds_pause7_in.wav-2acdc9f2f2d718bf19b9076e258cc62f.sample"
+
+[deps]
+
+source_file="res://assets/Audio/General Sounds/Pause Sounds/sfx_sounds_pause7_in.wav"
+dest_files=["res://.godot/imported/sfx_sounds_pause7_in.wav-2acdc9f2f2d718bf19b9076e258cc62f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bl825xiamc52w"
+path="res://.godot/imported/sfx_menu_select3.wav-edfcbcd806abf1283429627e0d3febaf.sample"
+
+[deps]
+
+source_file="res://assets/Audio/General Sounds/Menu Sounds/sfx_menu_select3.wav"
+dest_files=["res://.godot/imported/sfx_menu_select3.wav-edfcbcd806abf1283429627e0d3febaf.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

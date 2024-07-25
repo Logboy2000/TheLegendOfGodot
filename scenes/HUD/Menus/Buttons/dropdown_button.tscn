@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://bu6onyb23fxsq"]
+
+[ext_resource type="Theme" uid="uid://7kt8u7jnbucu" path="res://themes/debug_menu.tres" id="1_k7ogu"]
+
+[node name="DropdownButton" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 0
+theme = ExtResource("1_k7ogu")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 120
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(525, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 75
+text = "OptionName: "
+
+[node name="OptionButton" type="OptionButton" parent="HBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 75
+allow_reselect = true

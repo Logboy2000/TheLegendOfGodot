@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ciduog81sq7f"
+path="res://.godot/imported/sfx_sounds_falling9.wav-5a9e4e93d9705b5af85f489b24bfcc2f.sample"
+
+[deps]
+
+source_file="res://assets/Audio/Movement/Falling Sounds/sfx_sounds_falling9.wav"
+dest_files=["res://.godot/imported/sfx_sounds_falling9.wav-5a9e4e93d9705b5af85f489b24bfcc2f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

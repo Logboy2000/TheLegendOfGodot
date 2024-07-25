@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dkd0sbttmot78"
+path="res://.godot/imported/sfx_damage_hit9.wav-2719cd5459b4fa66db0e1c4db7067e85.sample"
+
+[deps]
+
+source_file="res://assets/Audio/General Sounds/Simple Damage Sounds/sfx_damage_hit9.wav"
+dest_files=["res://.godot/imported/sfx_damage_hit9.wav-2719cd5459b4fa66db0e1c4db7067e85.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ckd5st7ite36f"
+path="res://.godot/imported/sfx_wpn_grenadewhistle2.wav-0d9cff9d9070223e23fac2e19df11cec.sample"
+
+[deps]
+
+source_file="res://assets/Audio/Weapons/Grenade Whistles/sfx_wpn_grenadewhistle2.wav"
+dest_files=["res://.godot/imported/sfx_wpn_grenadewhistle2.wav-0d9cff9d9070223e23fac2e19df11cec.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

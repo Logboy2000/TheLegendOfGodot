@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://kjsn5qeyailr"
+path="res://.godot/imported/sfx_exp_medium1.wav-d221b0a5c8c8aac52986b6e96f9c5378.sample"
+
+[deps]
+
+source_file="res://assets/Audio/Explosions/Medium Length/sfx_exp_medium1.wav"
+dest_files=["res://.godot/imported/sfx_exp_medium1.wav-d221b0a5c8c8aac52986b6e96f9c5378.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

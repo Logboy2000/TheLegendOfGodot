@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7g3dfms0rdf2"]
+
+[ext_resource type="Texture2D" uid="uid://blni5o1kp2ry5" path="res://assets/Sprites/Other/Dust Particle.png" id="1_7fku4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gsjbs"]
+radius = 5.0
+
+[node name="NinjaStar" type="RigidBody2D"]
+linear_velocity = Vector2(8.25, 7.25)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_7fku4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_gsjbs")
