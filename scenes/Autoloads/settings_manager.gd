@@ -1,13 +1,30 @@
 extends Node
-
+var custom
 var settings_path = "user://settings.ini"
 var config = ConfigFile.new()
+const CURSOR = preload("res://assets/Sprites/Cursor.png")
+
+signal settings_applied
 
 # Define default values
 const DEFAULT_SETTINGS = {
-	"display": {"window_mode": 0, "vsync": true},
-	"audio": {"master_volume": 0.5},
-	"general": {"language": "en"}
+	"general": {
+		"language": "en", 
+		"custom_cursor": true,
+		"screen_transition": 0
+	},
+	"display": {
+		"window_mode": 0, 
+		"vsync": 0
+	},
+	"audio": {
+		"master": 0.5,
+		"music": 0.5,
+		"sfx": 0.5
+	},
+	"stupid": {
+		"amplify_audio": false
+	}
 }
 
 func _ready():
@@ -39,10 +56,12 @@ func apply_settings():
 	apply_display_settings()
 	apply_audio_settings()
 	apply_general_settings()
+	apply_fun_settings()
+	settings_applied.emit()
 
 func apply_display_settings():
 	#region Window Mode
-	var window_mode = config.get_value("display", "window_mode", DEFAULT_SETTINGS["display"]["window_mode"])
+	var window_mode = get_setting("display", "window_mode")
 	var window_modes = [
 		DisplayServer.WINDOW_MODE_WINDOWED,
 		DisplayServer.WINDOW_MODE_FULLSCREEN,
@@ -57,21 +76,37 @@ func apply_display_settings():
 	#endregion
 	
 	#region VSync
-	var vsync = config.get_value("display", "vsync", DEFAULT_SETTINGS["display"]["vsync"])
+	var vsync = get_setting("display", "vsync")
 	DisplayServer.window_set_vsync_mode(vsync)
 	#endregion
 
 func apply_audio_settings():
-	#region Master Volume
-	var master_volume = config.get_value("audio", "master_volume", DEFAULT_SETTINGS["audio"]["master_volume"])
-	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), 20.0 * log(master_volume) / log(10.0))
-	#endregion
+	var master = get_setting("audio", "master")
+	var music = get_setting("audio", "music")
+	var sfx = get_setting("audio", "sfx")
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear_to_db(master))
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), linear_to_db(music))
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), linear_to_db(sfx))
 
 func apply_general_settings():
-	#region Language
-	var language = config.get_value("general", "language", DEFAULT_SETTINGS["general"]["language"])
+	var screen_transition: int = get_setting("general", "screen_transition")
+	TransitionLayer.screen_transition = TransitionLayer.animation_player.get_animation_list()[screen_transition]
+	
+	var use_custom_cursor = get_setting("general", "custom_cursor")
+	if use_custom_cursor:
+		Input.set_custom_mouse_cursor(CURSOR)
+	else:
+		Input.set_custom_mouse_cursor(null)
+	
+	var language = get_setting("general", "language")
 	TranslationServer.set_locale(language)
-	#endregion
+
+func apply_fun_settings():
+	var amplify_audio = get_setting("stupid", "amplify_audio")
+	AudioServer.set_bus_effect_enabled(0, 0, amplify_audio)
+
+func get_setting(section: String, key: String):
+	return config.get_value(section, key, DEFAULT_SETTINGS[section][key])
 
 func set_setting(section: String, key: String, value):
 	config.set_value(section, key, value)

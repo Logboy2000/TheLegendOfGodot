@@ -1,107 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://dwlpc1u161uxg"]
+[gd_scene load_steps=10 format=3 uid="uid://dwlpc1u161uxg"]
 
 [ext_resource type="Script" path="res://scenes/Autoloads/transition_layer.gd" id="1_0un3y"]
 [ext_resource type="Texture2D" uid="uid://bdou48a4egt24" path="res://assets/Sprites/charlie.png" id="2_w2myl"]
 [ext_resource type="Texture2D" uid="uid://cacffoq5hll02" path="res://assets/circle.svg" id="3_r2bu6"]
-
-[sub_resource type="Animation" id="Animation_nljpm"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("SlideFromTop/ColorRect:size")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1280, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("SlideFromSides/ColorRectLeft:size")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 720)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("SlideFromSides/ColorRectRight:size")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 720)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("SlideFromSides/ColorRectRight:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1280, 0)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("FadeToBlack/ColorRect:modulate")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("SpinningCharlie/TextureRect:scale")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1e-05, 1e-05)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("SpinningCharlie/TextureRect:rotation")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Circle/TextureRect:scale")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1e-05, 1e-05)]
-}
 
 [sub_resource type="Animation" id="Animation_tibst"]
 resource_name = "circle"
@@ -116,7 +17,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(0.5, 0.5),
 "update": 0,
-"values": [Vector2(1e-05, 1e-05), Vector2(2.2, 2.2)]
+"values": [Vector2(0, 0), Vector2(1.25, 1.25)]
 }
 
 [sub_resource type="Animation" id="Animation_xcu2k"]
@@ -130,7 +31,7 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
+"transitions": PackedFloat32Array(0.5, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(0, 0, 0, 1)]
 }
@@ -139,60 +40,20 @@ tracks/0/keys = {
 resource_name = "hard_cut"
 length = 0.001
 
-[sub_resource type="Animation" id="Animation_u4tyo"]
-resource_name = "slide_from_sides"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("SlideFromSides/ColorRectLeft:size")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 720), Vector2(640, 720)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("SlideFromSides/ColorRectRight:size")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 720), Vector2(640, 720)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("SlideFromSides/ColorRectRight:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1280, 0), Vector2(640, 0)]
-}
-
 [sub_resource type="Animation" id="Animation_uu5b2"]
 resource_name = "slide_from_top"
 length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SlideFromTop/ColorRect:size")
+tracks/0/path = NodePath("SlideFromTop/ColorRect:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
+"transitions": PackedFloat32Array(0.5, 0.5),
 "update": 0,
-"values": [Vector2(1280, 0), Vector2(1280, 720)]
+"values": [Vector2(1, 1e-05), Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_ykgmw"]
@@ -206,9 +67,9 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
+"transitions": PackedFloat32Array(0.5, 1),
 "update": 0,
-"values": [Vector2(1e-05, 1e-05), Vector2(5, 5)]
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -218,26 +79,24 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
+"transitions": PackedFloat32Array(0.5, 1),
 "update": 0,
 "values": [-6.28319, 6.28319]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_88ncr"]
 _data = {
-"RESET": SubResource("Animation_nljpm"),
-"circle": SubResource("Animation_tibst"),
-"fade_to_black": SubResource("Animation_xcu2k"),
-"hard_cut": SubResource("Animation_r4ae8"),
-"slide_from_sides": SubResource("Animation_u4tyo"),
-"slide_from_top": SubResource("Animation_uu5b2"),
-"spinning_charlie": SubResource("Animation_ykgmw")
+"Circle": SubResource("Animation_tibst"),
+"Fade To Black": SubResource("Animation_xcu2k"),
+"Hard Cut": SubResource("Animation_r4ae8"),
+"Slide From Top": SubResource("Animation_uu5b2"),
+"Spinning Charlie": SubResource("Animation_ykgmw")
 }
 
 [node name="TransitionLayer" type="CanvasLayer"]
 process_mode = 3
+layer = 128
 script = ExtResource("1_0un3y")
-screen_transition = "circle"
 metadata/_edit_vertical_guides_ = [-1149.0]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -245,38 +104,19 @@ libraries = {
 "": SubResource("AnimationLibrary_88ncr")
 }
 
-[node name="SlideFromTop" type="Node" parent="."]
+[node name="SlideFromTop" type="CanvasLayer" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="SlideFromTop"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_bottom = -720.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1, 1e-05)
+size_flags_horizontal = 3
 color = Color(0, 0, 0, 1)
 
-[node name="SlideFromSides" type="Node" parent="."]
-
-[node name="ColorRectLeft" type="ColorRect" parent="SlideFromSides"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -1280.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
-
-[node name="ColorRectRight" type="ColorRect" parent="SlideFromSides"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 1280.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
-
-[node name="FadeToBlack" type="Node" parent="."]
+[node name="FadeToBlack" type="CanvasLayer" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="FadeToBlack"]
 modulate = Color(1, 1, 1, 0)
@@ -289,7 +129,7 @@ pivot_offset = Vector2(640, 360)
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
-[node name="SpinningCharlie" type="Node" parent="."]
+[node name="SpinningCharlie" type="CanvasLayer" parent="."]
 
 [node name="TextureRect" type="TextureRect" parent="SpinningCharlie"]
 anchors_preset = 15
@@ -297,11 +137,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+rotation = -6.28319
 scale = Vector2(1e-05, 1e-05)
-pivot_offset = Vector2(640, 360)
+pivot_offset = Vector2(320, 180)
 texture = ExtResource("2_w2myl")
 
-[node name="Circle" type="Node" parent="."]
+[node name="Circle" type="CanvasLayer" parent="."]
 
 [node name="TextureRect" type="TextureRect" parent="Circle"]
 texture_filter = 2
@@ -310,12 +151,12 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -360.0
-offset_top = -360.0
-offset_right = 360.0
-offset_bottom = 360.0
+offset_left = -318.0
+offset_top = -318.0
+offset_right = 318.0
+offset_bottom = 318.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1e-05, 1e-05)
-pivot_offset = Vector2(360, 360)
+pivot_offset = Vector2(318, 318)
 texture = ExtResource("3_r2bu6")

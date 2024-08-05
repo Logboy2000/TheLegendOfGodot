@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://b06ldgmoba82q"]
+[gd_scene load_steps=2 format=3 uid="uid://bapgrpyr47qbv"]
 
-[ext_resource type="Theme" uid="uid://7kt8u7jnbucu" path="res://themes/debug_menu.tres" id="1_vygcf"]
+[ext_resource type="Theme" uid="uid://7kt8u7jnbucu" path="res://themes/menu_theme.tres" id="1_vygcf"]
 
 [node name="Slider" type="MarginContainer"]
 anchors_preset = 15
@@ -17,12 +17,12 @@ size_flags_vertical = 0
 theme_override_constants/separation = 120
 
 [node name="Label" type="Label" parent="HBoxContainer"]
-custom_minimum_size = Vector2(525, 0)
+custom_minimum_size = Vector2(125, 0)
 layout_mode = 2
-theme_override_font_sizes/font_size = 75
 text = "OptionName: "
 
-[node name="HSlider" type="HSlider" parent="HBoxContainer"]
+[node name="Slider" type="HSlider" parent="HBoxContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(300, 32)
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 1
+size_flags_horizontal = 10

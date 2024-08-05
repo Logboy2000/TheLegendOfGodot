@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://cy1i761606m2y"]
+
+[ext_resource type="Theme" uid="uid://7kt8u7jnbucu" path="res://themes/menu_theme.tres" id="1_ypj36"]
+
+[node name="CheckBox" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 0
+theme = ExtResource("1_ypj36")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 120
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(125, 0)
+layout_mode = 2
+text = "OptionName: "
+
+[node name="CheckBox" type="CheckBox" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10

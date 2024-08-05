@@ -14,7 +14,7 @@ func _ready():
 	for window_mode in WINDOW_MODE_ARRAY:
 		window_mode_option_button.add_item(window_mode)
 	
-	var window_mode = SettingsManager.config.get_value("display", "window_mode", 0)
+	var window_mode = SettingsManager.get_setting("display", "window_mode")
 	window_mode_option_button.selected = window_mode
 
 

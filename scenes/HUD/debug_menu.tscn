@@ -1,9 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://bi1nxeintb2hv"]
 
 [ext_resource type="Script" path="res://scenes/HUD/DebugMenu.gd" id="1_w0t45"]
-[ext_resource type="Theme" uid="uid://7kt8u7jnbucu" path="res://themes/debug_menu.tres" id="2_p8x7p"]
+[ext_resource type="Theme" uid="uid://bir3ljxmxmdx0" path="res://themes/debug_theme.tres" id="2_6qob5"]
 
 [node name="DebugMenu" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_w0t45")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -13,7 +14,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme = ExtResource("2_p8x7p")
+theme = ExtResource("2_6qob5")
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
@@ -30,13 +31,6 @@ text = "The Legend of Charlie (vX.X.X / Godot)"
 [node name="FPS" type="Label" parent="MarginContainer/InfoHUD"]
 layout_mode = 2
 text = "FPS: XX/XX"
-
-[node name="Scene" type="Label" parent="MarginContainer/InfoHUD"]
-layout_mode = 2
-text = "Scene: N/A"
-
-[node name="Spacer" type="Label" parent="MarginContainer/InfoHUD"]
-layout_mode = 2
 
 [node name="Player" type="Label" parent="MarginContainer/InfoHUD"]
 layout_mode = 2
@@ -67,3 +61,9 @@ F3: Rotate Clockwise
 F4: Force Camera Center
 F5: Reload Current Scene"
 vertical_alignment = 2
+
+[node name="UpdateSpeed" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[connection signal="timeout" from="UpdateSpeed" to="." method="_on_update_speed_timeout"]

@@ -15,7 +15,6 @@ func _ready():
 		option_button.add_item(v_sync_mode)
 	
 	var v_sync_mode = SettingsManager.config.get_value("display", "vsync", 0)
-	print("Loaded vsync mode:", v_sync_mode) 
 	option_button.selected = v_sync_mode
 	
 

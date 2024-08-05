@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://xrgh1vs0q23b"]
+
+[ext_resource type="PackedScene" uid="uid://bu6onyb23fxsq" path="res://scenes/HUD/Menus/Buttons/dropdown.tscn" id="1_o57qg"]
+[ext_resource type="Script" path="res://scenes/HUD/Menus/Buttons/Options/General/transition_change_button.gd" id="2_xkdbt"]
+
+[node name="TransitionChangeButton" instance=ExtResource("1_o57qg")]
+script = ExtResource("2_xkdbt")
+
+[node name="Label" parent="HBoxContainer" index="0"]
+text = "Scene Transition: "
+
+[node name="OptionButton" parent="HBoxContainer" index="1"]
+item_count = 1
+
+[connection signal="item_selected" from="HBoxContainer/OptionButton" to="." method="_on_option_button_item_selected"]

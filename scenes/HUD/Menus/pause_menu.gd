@@ -1,6 +1,8 @@
 extends Control
 
 @onready var settings_menu = $SettingsMenu
+@onready var resume: Button = $Panel/VBoxContainer/Resume
+
 
 func _physics_process(_delta):
 	if Input.is_action_just_pressed("pause"):
@@ -11,6 +13,7 @@ func _on_resume_pressed():
 func toggle_paused():
 	get_tree().paused = !get_tree().paused
 	visible = get_tree().paused
+	resume.grab_focus()
 
 
 func _on_back_to_title_pressed():
@@ -21,4 +24,5 @@ func _on_back_to_title_pressed():
 
 
 func _on_settings_pressed():
+	
 	settings_menu.visible = true
