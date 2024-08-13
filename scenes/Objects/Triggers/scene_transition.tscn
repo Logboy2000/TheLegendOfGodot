@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bk0nkgybisxrm"]
+
+[ext_resource type="Script" path="res://scenes/Objects/Triggers/scene_transition.gd" id="1_esok1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7nm2g"]
+size = Vector2(20, 48)
+
+[node name="SceneTransition" type="Node2D"]
+script = ExtResource("1_esok1")
+destination_scene = "res://scenes/Rooms/load_failed.tscn"
+
+[node name="Area2D" type="Area2D" parent="."]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_7nm2g")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

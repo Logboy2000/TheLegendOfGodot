@@ -1,0 +1,81 @@
+[gd_scene load_steps=8 format=3 uid="uid://h8s2m701i3xc"]
+
+[ext_resource type="Script" path="res://scenes/Objects/Projectiles/bullet.gd" id="1_mfpnk"]
+[ext_resource type="Texture2D" uid="uid://fy4ihljejb1m" path="res://assets/Sprites/Projectiles/bullet.png" id="2_fs6lu"]
+[ext_resource type="AudioStream" uid="uid://bbv2npktbagoq" path="res://assets/Audio/Weapons/Single Shot Sounds/sfx_weapon_singleshot7.wav" id="2_wwhr7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4uru0"]
+size = Vector2(8, 4)
+
+[sub_resource type="Animation" id="Animation_iwn5y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_22hqh"]
+resource_name = "fade_out"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kvpej"]
+_data = {
+"RESET": SubResource("Animation_iwn5y"),
+"fade_out": SubResource("Animation_22hqh")
+}
+
+[node name="Bullet" type="RigidBody2D" groups=["projectile"]]
+physics_interpolation_mode = 1
+collision_layer = 2
+collision_mask = 3
+continuous_cd = 1
+linear_velocity = Vector2(500, 0)
+script = ExtResource("1_mfpnk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_fs6lu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["projectile"]]
+shape = SubResource("RectangleShape2D_4uru0")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_4uru0")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_wwhr7")
+bus = &"SFX"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_kvpej")
+}
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

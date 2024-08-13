@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="CollectionsData" load_steps=2 format=3 uid="uid://dg7grw4css6by"]
+
+[ext_resource type="Script" path="res://addons/asset_dock/collection_data.gd" id="1_cmykx"]
+
+[resource]
+script = ExtResource("1_cmykx")
+collection_name = "Game Mechanics"
+collection_items = Array[int]([6102504913428612282])

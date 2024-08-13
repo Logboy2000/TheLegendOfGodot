@@ -1,0 +1,74 @@
+[gd_scene load_steps=3 format=3 uid="uid://bi1nxeintb2hv"]
+
+[ext_resource type="Script" path="res://scenes/Autoloads/DebugMenu.gd" id="1_w0t45"]
+[ext_resource type="Theme" uid="uid://bir3ljxmxmdx0" path="res://themes/debug_theme.tres" id="2_6qob5"]
+
+[node name="DebugMenu" type="CanvasLayer"]
+process_mode = 3
+visible = false
+script = ExtResource("1_w0t45")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("2_6qob5")
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="InfoHUD" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="GameVersion" type="Label" parent="MarginContainer/InfoHUD"]
+layout_mode = 2
+text = "The Legend of Charlie (vX.X.X / Godot)"
+
+[node name="FPS" type="Label" parent="MarginContainer/InfoHUD"]
+layout_mode = 2
+text = "FPS: XX/XX"
+
+[node name="Room" type="Label" parent="MarginContainer/InfoHUD"]
+layout_mode = 2
+text = "Room: ?"
+
+[node name="Player" type="Label" parent="MarginContainer/InfoHUD"]
+layout_mode = 2
+text = "Player:"
+
+[node name="Position" type="Label" parent="MarginContainer/InfoHUD"]
+layout_mode = 2
+text = "X: 0  Y: 0"
+
+[node name="Velocity" type="Label" parent="MarginContainer/InfoHUD"]
+layout_mode = 2
+text = "Xv: 0  Yv: 0"
+
+[node name="Message" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "DEBUG MODE ;)"
+horizontal_alignment = 2
+
+[node name="Keybinds" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Debug Keybinds
+--------------
+F1: Toggle this menu
+F2: Rotate Counterclockwise
+F3: Rotate Clockwise
+F4: Force Camera Center
+F5: Reload Current Scene"
+vertical_alignment = 2
+
+[node name="UpdateSpeed" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[connection signal="timeout" from="UpdateSpeed" to="." method="_on_update_speed_timeout"]

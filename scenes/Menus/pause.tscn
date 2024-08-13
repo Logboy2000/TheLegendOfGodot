@@ -1,0 +1,57 @@
+[gd_scene load_steps=5 format=3 uid="uid://c22kkhnxxvg5c"]
+
+[ext_resource type="Script" path="res://scenes/Menus/pause.gd" id="1_21tuh"]
+[ext_resource type="Theme" uid="uid://7kt8u7jnbucu" path="res://themes/menu_theme.tres" id="2_fnebj"]
+[ext_resource type="PackedScene" uid="uid://bueuv504gyu84" path="res://scenes/Menus/Buttons/audio_button.tscn" id="3_wrhad"]
+[ext_resource type="PackedScene" uid="uid://b3pgmvh153oiw" path="res://scenes/Menus/settings_menu.tscn" id="4_kf8ug"]
+
+[node name="Pause" type="CanvasLayer"]
+process_mode = 3
+visible = false
+script = ExtResource("1_21tuh")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.403922)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -77.5
+offset_right = 77.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+theme = ExtResource("2_fnebj")
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "Paused"
+horizontal_alignment = 1
+
+[node name="Resume" parent="VBoxContainer" instance=ExtResource("3_wrhad")]
+layout_mode = 2
+text = "Resume"
+
+[node name="Options" parent="VBoxContainer" instance=ExtResource("3_wrhad")]
+layout_mode = 2
+text = "Options"
+
+[node name="Return" parent="VBoxContainer" instance=ExtResource("3_wrhad")]
+layout_mode = 2
+text = "Back to Title"
+
+[node name="SettingsMenu" parent="." instance=ExtResource("4_kf8ug")]
+visible = false
+
+[connection signal="pressed" from="VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="VBoxContainer/Return" to="." method="_on_return_pressed"]

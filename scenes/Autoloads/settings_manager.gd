@@ -1,5 +1,4 @@
 extends Node
-var custom
 var settings_path = "user://settings.ini"
 var config = ConfigFile.new()
 const CURSOR = preload("res://assets/Sprites/Cursor.png")
@@ -112,3 +111,4 @@ func set_setting(section: String, key: String, value):
 	config.set_value(section, key, value)
 	save_settings()
 	apply_settings()
+	

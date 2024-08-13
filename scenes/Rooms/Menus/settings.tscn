@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://d0oi4cn2e3m7t"]
+
+[ext_resource type="PackedScene" uid="uid://d4h2cl6t36hq1" path="res://scenes/Rooms/room.tscn" id="1_urgqn"]
+[ext_resource type="Shader" path="res://shaders/texture_scroll.gdshader" id="4_3n8ox"]
+[ext_resource type="PackedScene" uid="uid://b3pgmvh153oiw" path="res://scenes/Menus/settings_menu.tscn" id="4_c7k8a"]
+[ext_resource type="Texture2D" uid="uid://chh8o466lffro" path="res://assets/Sprites/Background/Purple.png" id="5_eedpg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lbgom"]
+shader = ExtResource("4_3n8ox")
+shader_parameter/speed = 0.2
+
+[node name="Settings" instance=ExtResource("1_urgqn")]
+
+[node name="TextureRect" type="TextureRect" parent="." index="0"]
+material = SubResource("ShaderMaterial_lbgom")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_eedpg")
+stretch_mode = 1
+
+[node name="SettingsMenu" parent="." index="1" instance=ExtResource("4_c7k8a")]

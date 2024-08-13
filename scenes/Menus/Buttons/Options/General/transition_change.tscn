@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwlu6ibj0o1if"]
+
+[ext_resource type="PackedScene" uid="uid://bu6onyb23fxsq" path="res://scenes/Menus/Buttons/dropdown.tscn" id="1_24s22"]
+[ext_resource type="Script" path="res://scenes/Menus/Buttons/Options/General/transition_change_button.gd" id="2_6e10k"]
+
+[node name="TransitionDropdown" instance=ExtResource("1_24s22")]
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("2_6e10k")
+
+[node name="Label" parent="HBoxContainer" index="0"]
+text = "Transition:"
+
+[connection signal="item_selected" from="HBoxContainer/OptionButton" to="." method="_on_option_button_item_selected"]

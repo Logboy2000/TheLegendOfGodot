@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://50rs4ddyx4ts"]
+
+[ext_resource type="PackedScene" uid="uid://d4h2cl6t36hq1" path="res://scenes/Rooms/room.tscn" id="1_07kmy"]
+[ext_resource type="PackedScene" uid="uid://bbkdacmg33o2q" path="res://scenes/Menus/title_screen.tscn" id="2_qyadn"]
+[ext_resource type="Shader" path="res://shaders/texture_scroll.gdshader" id="4_i6abf"]
+[ext_resource type="Texture2D" uid="uid://dv6gkc3f1mx3s" path="res://assets/Sprites/Background/Green.png" id="5_uvfp2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7unec"]
+shader = ExtResource("4_i6abf")
+shader_parameter/speed = 0.2
+
+[node name="Title" instance=ExtResource("1_07kmy")]
+
+[node name="TextureRect" type="TextureRect" parent="." index="0"]
+material = SubResource("ShaderMaterial_7unec")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_uvfp2")
+stretch_mode = 1
+
+[node name="TitleScreen" parent="." index="1" instance=ExtResource("2_qyadn")]

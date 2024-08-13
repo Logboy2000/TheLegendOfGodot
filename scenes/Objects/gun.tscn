@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://u3a7h7qb4mxo"]
+
+[ext_resource type="Texture2D" uid="uid://d3ojumy2jqqh0" path="res://assets/Sprites/gun.png" id="1_2xrq8"]
+[ext_resource type="Script" path="res://scenes/Objects/gun.gd" id="1_8rc4d"]
+
+[node name="Gun" type="Node2D"]
+script = ExtResource("1_8rc4d")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 2
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("1_2xrq8")
+
+[node name="BulletSpawn" type="Node2D" parent="Sprite2D"]
+position = Vector2(200, -120)
+scale = Vector2(20, 20)

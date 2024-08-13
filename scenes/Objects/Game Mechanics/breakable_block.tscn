@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cs7dmnf5ybheo"]
+
+[ext_resource type="Script" path="res://scenes/Objects/Game Mechanics/breakable_block.gd" id="1_ryv4w"]
+[ext_resource type="Texture2D" uid="uid://bdou48a4egt24" path="res://assets/Sprites/charlie.png" id="1_uh8ji"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xcx7a"]
+size = Vector2(32, 30)
+
+[node name="BreakableBlock" type="Area2D"]
+script = ExtResource("1_ryv4w")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_uh8ji")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_xcx7a")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

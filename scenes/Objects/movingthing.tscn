@@ -1,0 +1,96 @@
+[gd_scene load_steps=7 format=3 uid="uid://ce1ugp77bk00d"]
+
+[sub_resource type="Curve2D" id="Curve2D_pybey"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 2, -1, -80.6102, -87.6812, 80.6102, 87.6812, 310, 2, -188.038, 148.332, 188.038, -148.332, 250, 65, -65.0538, 224.86, 65.0538, -224.86, -145, 61, 304.056, -190.919, -304.056, 190.919, -134, -109, -53.7401, -46.6691, 53.7401, 46.6691, 188, -69, -422.85, -7.07107, 422.85, 7.07107, 160, 35, 169.706, -224.86, -169.706, 224.86, -81, 29, -115.966, -7.07107, 115.966, 7.07107, -63, -58, 62.3055, 144.453, -62.3055, -144.453, 77, -36, 0, 0, 0, 0, 2, -1)
+}
+point_count = 11
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1hlxy"]
+
+[sub_resource type="Animation" id="Animation_hrfr8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_foq7v"]
+resource_name = "move"
+length = 10.0
+loop_mode = 1
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g6t5v"]
+_data = {
+"RESET": SubResource("Animation_hrfr8"),
+"move": SubResource("Animation_foq7v")
+}
+
+[sub_resource type="GDScript" id="GDScript_53gsx"]
+script/source = "extends AnimationPlayer
+
+
+
+func _ready() -> void:
+	play(\"move\")
+"
+
+[node name="Path2D" type="Path2D"]
+curve = SubResource("Curve2D_pybey")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2(2, -1)
+rotation = 0.00973995
+rotates = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="PathFollow2D"]
+remote_path = NodePath("../../AnimatableBody2D")
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
+position = Vector2(2, -1)
+rotation = 0.00973995
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
+shape = SubResource("RectangleShape2D_1hlxy")
+
+[node name="ColorRect" type="ColorRect" parent="AnimatableBody2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_g6t5v")
+}
+speed_scale = 0.1
+script = SubResource("GDScript_53gsx")

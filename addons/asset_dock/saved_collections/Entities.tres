@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="CollectionsData" load_steps=2 format=3 uid="uid://dle0kgbe6k4n7"]
+
+[ext_resource type="Script" path="res://addons/asset_dock/collection_data.gd" id="1_dbbuk"]
+
+[resource]
+script = ExtResource("1_dbbuk")
+collection_name = "Entities"
+collection_items = Array[int]([3441322847537306538])
