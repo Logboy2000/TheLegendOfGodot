@@ -55,8 +55,9 @@ script = ExtResource("1_mfpnk")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_fs6lu")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["projectile"]]
-shape = SubResource("RectangleShape2D_4uru0")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." groups=["projectile"]]
+rotation = 1.5708
+polygon = PackedVector2Array(-2, 4, -2, -3, -1, -4, 1, -4, 2, -3, 2, 4)
 
 [node name="Area2D" type="Area2D" parent="."]
 

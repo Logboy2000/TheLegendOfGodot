@@ -1,11 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cu18vjrr4lu7n"]
+[gd_scene load_steps=7 format=3 uid="uid://cu18vjrr4lu7n"]
 
-[ext_resource type="Texture2D" uid="uid://bdou48a4egt24" path="res://assets/Sprites/charlie.png" id="1_qtcqm"]
+[ext_resource type="Texture2D" uid="uid://yr7lg4msdq0w" path="res://assets/Sprites/Main Characters/Ninja Frog/jump-Sheet.png" id="1_7kvqf"]
 [ext_resource type="Script" path="res://scenes/Objects/Particles/dash_trail.gd" id="2_im73h"]
 
 [sub_resource type="Gradient" id="Gradient_1vo57"]
-offsets = PackedFloat32Array(0, 0.5, 1)
-colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+offsets = PackedFloat32Array(0, 0.5)
+colors = PackedColorArray(1, 1, 1, 0.494118, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_0iasw"]
 gradient = SubResource("Gradient_1vo57")
@@ -15,12 +15,16 @@ particle_flag_disable_z = true
 gravity = Vector3(0, 0, 0)
 color_ramp = SubResource("GradientTexture1D_0iasw")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_0hukv"]
+atlas = ExtResource("1_7kvqf")
+region = Rect2(0, 0, 9, 20)
+
 [node name="DashTrailParticle" type="GPUParticles2D"]
 emitting = false
-amount = 5
+amount = 10
 process_material = SubResource("ParticleProcessMaterial_oifrt")
-texture = ExtResource("1_qtcqm")
-lifetime = 0.2
+texture = SubResource("AtlasTexture_0hukv")
+lifetime = 0.5
 one_shot = true
 fixed_fps = 0
 draw_order = 0

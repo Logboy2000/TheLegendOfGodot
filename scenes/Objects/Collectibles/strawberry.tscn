@@ -1,7 +1,7 @@
 [gd_scene load_steps=22 format=3 uid="uid://bpbac4x17c2x7"]
 
 [ext_resource type="Script" path="res://scenes/Objects/Collectibles/strawberry.gd" id="1_eu2ar"]
-[ext_resource type="Texture2D" uid="uid://b3tbegp6yevyl" path="res://assets/Sprites/Items/Fruits/Strawberry.png" id="1_q5iry"]
+[ext_resource type="Texture2D" uid="uid://b3tbegp6yevyl" path="res://assets/Sprites/Entities/Items/Fruits/Strawberry.png" id="1_q5iry"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w4lqw"]
 atlas = ExtResource("1_q5iry")

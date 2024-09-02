@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://b68c0wb2av138"]
+
+[ext_resource type="PackedScene" uid="uid://cy1i761606m2y" path="res://scenes/Menus/Buttons/checkbox.tscn" id="1_kg5c3"]
+[ext_resource type="Script" path="res://scenes/Menus/Buttons/Options/Controls/use_mouse.gd" id="2_iqykj"]
+
+[node name="UseMouse" instance=ExtResource("1_kg5c3")]
+script = ExtResource("2_iqykj")
+
+[node name="Label" parent="HBoxContainer" index="0"]
+text = "Use Mouse for Aiming"
+
+[connection signal="toggled" from="HBoxContainer/CheckBox" to="." method="_on_check_box_toggled"]

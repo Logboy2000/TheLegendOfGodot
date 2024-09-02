@@ -12,5 +12,5 @@ func _on_options_pressed():
 	TransitionLayer.change_scene("res://scenes/Rooms/Menus/settings.tscn")
 
 func _on_exit_pressed():
-	await TransitionLayer.play_transition()
+	GameManager.debug_enabled = false
 	get_tree().quit()

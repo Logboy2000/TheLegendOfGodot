@@ -1,6 +1,6 @@
 extends RigidBody2D
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
-@onready var collision_shape: CollisionShape2D = $CollisionShape2D
+@onready var collision_shape: CollisionPolygon2D = $CollisionPolygon2D
 @onready var area_shape: CollisionShape2D = $Area2D/CollisionShape2D
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer

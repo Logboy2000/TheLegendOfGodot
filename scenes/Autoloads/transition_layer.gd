@@ -10,9 +10,10 @@ func change_scene(target: String, transition: String = screen_transition) -> voi
 	animation_player.play(transition)
 	await animation_player.animation_finished
 	get_tree().change_scene_to_file(target)
-	get_tree().paused = false
 	is_transitioning = false
 	animation_player.play_backwards(transition)
+	await animation_player.animation_finished
+	get_tree().paused = false
 
 func play_transition(reverse: bool = false):
 	if reverse:

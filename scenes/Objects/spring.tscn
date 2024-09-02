@@ -1,8 +1,8 @@
 [gd_scene load_steps=15 format=3 uid="uid://bt83mg7gp1tp2"]
 
 [ext_resource type="Script" path="res://scenes/Objects/spring.gd" id="1_l1nmr"]
-[ext_resource type="Texture2D" uid="uid://de5lefpo1uj2t" path="res://assets/Sprites/Traps/Trampoline/Jump (28x28).png" id="2_u0ruy"]
-[ext_resource type="Texture2D" uid="uid://c68ceeruoyh34" path="res://assets/Sprites/Traps/Trampoline/Idle.png" id="3_811ri"]
+[ext_resource type="Texture2D" uid="uid://de5lefpo1uj2t" path="res://assets/Sprites/Entities/Trampoline/Jump (28x28).png" id="2_u0ruy"]
+[ext_resource type="Texture2D" uid="uid://c68ceeruoyh34" path="res://assets/Sprites/Entities/Trampoline/Idle.png" id="3_811ri"]
 [ext_resource type="AudioStream" uid="uid://b4t2nfffa4wsx" path="res://assets/Audio/sndSpring.ogg" id="4_thgjd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ttqhw"]

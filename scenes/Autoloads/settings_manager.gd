@@ -3,9 +3,10 @@ var settings_path = "user://settings.ini"
 var config = ConfigFile.new()
 const CURSOR = preload("res://assets/Sprites/Cursor.png")
 
+var mouse_aim = true
+
 signal settings_applied
 
-# Define default values
 const DEFAULT_SETTINGS = {
 	"general": {
 		"language": "en", 
@@ -20,6 +21,9 @@ const DEFAULT_SETTINGS = {
 		"master": 0.5,
 		"music": 0.5,
 		"sfx": 0.5
+	},
+	"controls": {
+		"mouse_aim": true,
 	},
 	"stupid": {
 		"amplify_audio": false
@@ -56,6 +60,7 @@ func apply_settings():
 	apply_audio_settings()
 	apply_general_settings()
 	apply_fun_settings()
+	apply_control_settings()
 	settings_applied.emit()
 
 func apply_display_settings():
@@ -103,6 +108,9 @@ func apply_general_settings():
 func apply_fun_settings():
 	var amplify_audio = get_setting("stupid", "amplify_audio")
 	AudioServer.set_bus_effect_enabled(0, 0, amplify_audio)
+
+func apply_control_settings():
+	mouse_aim = get_setting("controls", "mouse_aim")
 
 func get_setting(section: String, key: String):
 	return config.get_value(section, key, DEFAULT_SETTINGS[section][key])

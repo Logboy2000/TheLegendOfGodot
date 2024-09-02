@@ -10,7 +10,7 @@ var prev_bottom_limit = limit_bottom
 func _physics_process(_delta: float) -> void:
 	if GameManager.debug_enabled:
 		if Input.is_action_pressed("zoom_in"):
-			zoom = zoom * 1.01
+			zoom = zoom * 1.0
 		if Input.is_action_pressed("zoom_out"):
 			if zoom.x > 1.0:
 				zoom /= 1.01

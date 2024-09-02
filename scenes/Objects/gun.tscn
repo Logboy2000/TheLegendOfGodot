@@ -8,9 +8,12 @@ script = ExtResource("1_8rc4d")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 2
+position = Vector2(3, 2)
 scale = Vector2(0.02, 0.02)
 texture = ExtResource("1_2xrq8")
 
-[node name="BulletSpawn" type="Node2D" parent="Sprite2D"]
-position = Vector2(200, -120)
-scale = Vector2(20, 20)
+[node name="BulletSpawnOrigin" type="Node2D" parent="."]
+
+[node name="BulletSpawn" type="Node2D" parent="BulletSpawnOrigin"]
+position = Vector2(7, 0)
+scale = Vector2(0.4, 0.4)

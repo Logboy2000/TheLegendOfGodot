@@ -4,6 +4,8 @@ var paused: bool = false
 @onready var settings_menu: Control = $SettingsMenu
 
 func _physics_process(_delta: float) -> void:
+	if visible:
+		get_tree().paused = true
 	if Input.is_action_just_pressed("pause") and settings_menu.visible == false:
 		toggle_pause()
 

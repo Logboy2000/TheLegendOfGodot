@@ -1,20 +1,21 @@
 [gd_scene load_steps=5 format=3 uid="uid://e8m8upgwr36s"]
 
 [ext_resource type="Script" path="res://scenes/Objects/Player/player.gd" id="1_50i1m"]
-[ext_resource type="SpriteFrames" uid="uid://ckmkk6n51aj1" path="res://scenes/Objects/Player/Skins/Default.tres" id="2_8x5bw"]
+[ext_resource type="SpriteFrames" uid="uid://ckmkk6n51aj1" path="res://assets/Sprites/Default.tres" id="2_8x5bw"]
 [ext_resource type="PackedScene" uid="uid://u3a7h7qb4mxo" path="res://scenes/Objects/gun.tscn" id="6_kmort"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ev7vs"]
 size = Vector2(5, 10)
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
+collision_layer = 6
+collision_mask = 5
 floor_snap_length = 3.0
 script = ExtResource("1_50i1m")
-friction = 0.0
 coyote_time_frames = 20
-jump_buffer_frames = 3
-dash_speed = 50
-dash_length_frames = 5
+jump_buffer_frames = 5
+dash_speed = 500
+dash_length_frames = 10
 dash_delay_frames = 10
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["player"]]
@@ -24,7 +25,6 @@ animation = &"idle"
 frame_progress = 0.0190902
 
 [node name="Area2D" type="Area2D" parent="." groups=["player"]]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["player"]]
 position = Vector2(0, 5)
@@ -34,7 +34,11 @@ shape = SubResource("RectangleShape2D_ev7vs")
 polygon = PackedVector2Array(3, 10, -3, 10, -3, 0, 3, 0)
 
 [node name="Gun" parent="." instance=ExtResource("6_kmort")]
-position = Vector2(2, 5)
+position = Vector2(0, 2)
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(0, 9)
+target_position = Vector2(6, 0)
 
 [connection signal="dash_ended" from="." to="." method="_on_dash_ended"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

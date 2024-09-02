@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://cpyk7266a0xs8"]
 
-[ext_resource type="Texture2D" uid="uid://dxaswllst8cpv" path="res://assets/Sprites/Items/Fruits/Collected.png" id="1_ops18"]
+[ext_resource type="Texture2D" uid="uid://dxaswllst8cpv" path="res://assets/Sprites/Entities/Items/Fruits/Collected.png" id="1_ops18"]
 [ext_resource type="Script" path="res://scenes/Objects/Collectibles/collected_animation.gd" id="2_s7wk6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_esbvn"]

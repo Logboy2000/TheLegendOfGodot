@@ -1,4 +1,7 @@
 extends Control
+
+
+
 @onready var reset: Button = $MarginContainer/VBoxContainer/HBoxContainer/Reset
 @onready var cancel: Button = $AreYouSure/VBoxContainer/HBoxContainer/Cancel
 @onready var are_you_sure: Panel = $AreYouSure

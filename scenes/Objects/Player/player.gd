@@ -1,5 +1,5 @@
+@tool
 extends CharacterBody2D
-
 enum States {
 	IDLE,
 	WALKING,
@@ -18,8 +18,6 @@ const DASH_TRAIL = preload("res://scenes/Objects/Particles/dash_trail.tscn")
 
 signal dash_ended
 
-
-
 @export_category("General")
 @export var state: States
 @export var facing_direction: float = 1
@@ -30,9 +28,9 @@ signal dash_ended
 @export var gravity_scale: float = 1.0
 @export var max_run_speed: float = 90.0
 @export var run_acceleration := 1000.0
-@export var friction := 50.0
 @export var run_reduce := 400
 @export var air_speed_multiplier := 0.75
+var use_mouse_aiming := false
 var move_speed_multiplier := 1
 
 
@@ -54,7 +52,7 @@ var frames_since_grounded: int = 100
 var frames_since_jumped: int = 100
 var dash_frames: int = 0
 var input_direction: Vector2
-var dash_direction: Vector2
+var dash_direction: float
 
 var can_jump: bool = false
 var can_dash: bool = true
@@ -62,22 +60,29 @@ var can_dash: bool = true
 var is_jumping: bool = false
 var is_dashing: bool = false
 
+func _enter_tree() -> void:
+	load_player_state()
 
 func _physics_process(delta):
-	input_direction = Vector2(Input.get_axis("left", "right"), Input.get_axis("down", "up")) 
+	input_direction = GameManager.input_direction
 	if input_direction.x != 0:
 		facing_direction = input_direction.x
 	
 	#region Run
-	if (abs(velocity.x) > max_run_speed and sign(velocity.x) == input_direction.x):
-		velocity.x = move_toward(velocity.x, max_run_speed * input_direction.x, run_reduce * move_speed_multiplier * delta);  #Reduce back from beyond the max speed
+	if (abs(velocity.x) > max_run_speed and sign(velocity.x) == input_direction.x) and not is_dashing:
+		#Reduce back from beyond the max speed
+		velocity.x = move_toward(velocity.x, max_run_speed * input_direction.x, run_reduce * move_speed_multiplier * delta)
 	else:
-		velocity.x = move_toward(velocity.x, max_run_speed * input_direction.x, run_acceleration * move_speed_multiplier * delta);   #Approach the max speed
+		#Approach the max speed
+		velocity.x = move_toward(velocity.x, max_run_speed * input_direction.x, run_acceleration * move_speed_multiplier * delta)  
 
 	#endregion
 	#region Jump
 	if is_on_floor():
-		floor_touched()
+		can_jump = true 
+		can_dash = true
+		is_jumping = false
+		frames_since_grounded = 0
 	else:
 		frames_since_grounded += 1
 	if Input.is_action_just_pressed("jump"):
@@ -101,42 +106,33 @@ func _physics_process(delta):
 	#endregion
 	#region Dash
 	if Input.is_action_just_pressed("dash") and can_dash:
-		get_tree().current_scene.add_node(DASH_TRAIL.instantiate())
-		if input_direction == Vector2(0,0):
-			dash_direction.x = facing_direction
-		else:
-			dash_direction = input_direction
-			dash_direction.y *= -1
+		var dash_trail = DASH_TRAIL.instantiate()
+		add_child(dash_trail)
+		dash_direction = facing_direction
 		is_dashing = true
 		can_dash = false
 		dash_frames = 0
-		velocity = dash_speed * dash_direction
+		
 	if is_dashing:
-		velocity += dash_speed * dash_direction
+		velocity.x = dash_speed * dash_direction
 		dash_frames += 1
-		if dash_direction.y == 0:
-			velocity.y = 0
-		if dash_frames > dash_length_frames:
+		velocity.y = 0
+		if dash_frames > dash_length_frames: #on dash end
 			is_dashing = false
+			
 			dash_ended.emit()
 	
 	#endregion
 	#region Gun
-	var shoot_direction: Vector2
-	if input_direction == Vector2.ZERO:
-		shoot_direction = Vector2(facing_direction, 0)
-	else:
-		shoot_direction = input_direction
-		shoot_direction.y *= -1
-	gun.rotation_degrees = rad_to_deg(shoot_direction.angle())
+
+		
 	if Input.is_action_just_pressed("attack"):
-		gun.shoot(shoot_direction)
-		#Recoil
-		velocity -= shoot_direction * 200
-	gun.sprite.flip_v = (gun.rotation_degrees < 0)
+		gun.shoot()
+		velocity -= gun.shoot_direction * gun.recoil
 	
 	
-#endregion
+	
+	#endregion
 	
 	if not is_dashing:
 		velocity.y += gravity * gravity_scale
@@ -187,18 +183,24 @@ func update_sprite():
 func update_debug():
 	DebugMenu.display_position = round(position)
 	DebugMenu.display_velocity = velocity
-func floor_touched():
-	can_jump = true 
-	can_dash = true
-	is_jumping = false
-	frames_since_grounded = 0
+
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("spring"):
 		velocity.y = -400
-		floor_touched()
+		can_jump = false 
+		can_dash = true
+		is_jumping = false
+		frames_since_grounded = 0
 		is_dashing = false
+
+func save_player_state():
+	PlayerState.velocity = velocity
+	PlayerState.facing_direction = facing_direction
+func load_player_state():
+	velocity = PlayerState.velocity
+	facing_direction = PlayerState.facing_direction
 
 
 func _on_dash_ended() -> void:
